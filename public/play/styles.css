@@ -1,0 +1,323 @@
+/* "tarball" - top left bottom right */
+body {
+    background-color: rgb(48, 48, 48);
+    color: white;
+    font-family: 'Karla', sans-serif;
+    font-size: 12pt;
+    overflow: hidden;
+}
+
+#topbar {
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    height: 28px;
+    left: 12.94%;
+    right: 12.94%;
+    top: 0;
+    padding: 0 6px 0 6px;
+    background: #1B1B1B;
+    border-radius: 0px 0px 6px 6px;
+}
+
+@media only screen and (max-width: 500px) {
+    #topbar {
+        left: 0;
+        right: 0;
+        width: 100%
+    }
+  }
+
+#taskbar-labels {
+    /* Auto layout */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+#taskbar-labels li {
+    height: 100%;
+}
+
+.taskbar-item {
+    display: flex;
+    padding: 0 5px 0 5px;
+    align-items: center;
+    font-family: 'Karla';
+    font-weight: normal;
+    font-size: 14px;
+    color: #FFFFFF;
+    height: 100%;
+    user-select: none;
+}
+
+.main-taskbar-item {
+    font-weight: bold;
+}
+
+#cry-counter {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0px;
+    gap: 6px;
+    color: #FFF4CC;
+}
+
+#cry-count {
+    font-family: 'Karla';
+    font-size: 20px;
+}
+
+
+
+ul li {
+    float: left;
+    position: relative;
+}
+
+.dropdown-button {
+    text-decoration: none;
+}
+
+.dropdown-button.opened {
+    background-color: rgb(52, 52, 52);
+}
+ 
+.dropdown-menu {
+    display: none;
+    z-index: 9999999; /* AĞLA */
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 250px;
+    background: rgb(31, 31, 31);
+    border-radius: 0px 0px 6px 6px;
+    overflow: hidden;
+}
+
+.material-symbols-sharp {
+    font-size: 24px;
+}
+
+.dropdown-menu li {
+    user-select: none;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 4px;
+    color: white;
+}
+
+.dropdown-menu li span.material-symbols-sharp {
+    font-size: 20px;
+    margin-right: 4px;
+}
+
+.dropdown-menu li:hover {
+    background-color: rgb(52, 52, 52);
+}
+
+.window {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    background: #1B1B1B;
+    border: 1px solid dimgray;
+    border-radius: 6px;
+    overflow: visible;
+}
+
+.window-header {
+    display: flex;
+    height: 24px;
+    background: #1B1B1B;
+    color: white;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 6px 6px 0 0;
+    justify-content: space-between;
+    user-select: none;
+    align-items: center;
+    flex-direction: row;
+}
+
+.window-buttons {
+    border-top-right-radius: inherit;
+    overflow: hidden;
+}
+
+.window-header a {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.window-header a.window-close:hover {
+    background: rgb(255, 91, 91);
+}
+
+.window-icon.quirky {
+    position: relative;
+    width: 80px;
+    height: 25px;
+    overflow: hidden;
+    background: linear-gradient(140deg, #00A3FF 0%, rgba(255, 111, 111, 0) 60%);
+}
+
+.rotated-icon {
+    position: absolute;
+    font-size: 30px;
+    left: -6px;
+    top: -6px;
+    color: white;
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.75));
+    transform: rotate(-20deg);
+}
+
+.window-title {
+    position: relative;
+    left: 8px;
+    font-family: 'Karla';
+    font-size: 16px;
+    color: #FFFFFF;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.window-title.quirky {
+    position: absolute;
+    left: 24px;
+    top: 1px;
+}
+
+.window-content {
+    width: 100%;
+    height: calc(100% - 25px);
+    display: flex;
+    overflow: auto;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+#wAbout {
+    position: absolute;
+    width: 350px;
+    height: 250px;
+    left: 50px;
+    top: 50px;
+}
+
+#wAbout div.window-content div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#wAbout div.window-content div span:nth-child(2) {
+    font-weight: bold;
+    color: rgb(137, 218, 255);
+}
+
+#wAbout div.window-content div span:nth-child(3) {
+    font-size: 14px;
+    color: white;
+}
+
+#wAbout div.window-content div span:nth-child(4) {
+    font-size: 14px;
+    color: lightgray;
+}
+
+#wSettings {
+    position: absolute;
+    width: 265px;
+    height: 234px;
+    left: 50px;
+    top: 50px;
+}
+
+#wSettings div.window-header div.window-icon.quirky {
+    background: linear-gradient(112.94deg, #ffee00 0%, rgba(0, 163, 255, 0) 72.13%, rgba(255, 111, 111, 0) 72.13%);
+}
+
+#wNah {
+    position: absolute;
+    width: 444px;
+    height: 350px;
+    left: 76px;
+    top: 142px;
+}
+
+.ui-resizable-n {
+    height: 6px;
+    width: 100%;
+    top: -6px;
+    left: 0;
+}
+
+.ui-resizable-s {
+    height: 8px;
+    width: 100%;
+    bottom: -6px;
+    left: 0;
+}
+
+.ui-resizable-e {
+    width: 10px;
+    right: -5px;
+    top: 0;
+    height: 100%;
+}
+
+.ui-resizable-w {
+    width: 10px;
+    left: -5px;
+    top: 0;
+    height: 100%;
+}
+
+.ui-resizable-se {
+    width: 16px;
+    height: 16px;
+    right: -8px;
+    bottom: -8px;
+}
+
+.ui-resizable-sw {
+    width: 16px;
+    height: 16px;
+    left: -8px;
+    bottom: -8px;
+}
+
+.ui-resizable-nw {
+    width: 16px;
+    height: 16px;
+    left: -8px;
+    top: -8px;
+}
+
+.ui-resizable-ne {
+    width: 12px;
+    height: 12px;
+    right: -8px;
+    top: -8px;
+}
