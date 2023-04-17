@@ -40,7 +40,7 @@ function newBrowserWindow(targetUrl) {
     const w = newWindow('wBrowser');
     w.pagetitle = "Boş sayfa";
     w.url = "about:blank";
-    w.content = "";
+    w.content = document.createElement("div");
     // TEMPLATE LITERALS DON'T UPDATE
     // use a databinding library
     w.innerHTML = `
@@ -82,16 +82,23 @@ function newBrowserWindow(targetUrl) {
     navigateTo(w, targetUrl);
 }
 function navigateTo(w, url) {
-    var title = "", content = "", favicon = `<span class="material-symbols-sharp">draft</span>`;
+    var title = "", content = document.createElement("div"), favicon = `<span class="material-symbols-sharp">draft</span>`;
+    content.className = 'window-content';
     if (url == "tutorial") {
         favicon = `<span class="material-symbols-sharp">quiz</span>`
         title = "Ağla Nasıl Oynanır";
-        content = "Ağlayarak\n(tutorial henüz yazılmadı)";
+        content.innerHTML = "Ağlayarak\n(tutorial henüz yazılmadı)";
     }
     if (url == "about:nah") {
         favicon = `<img style="max-width: 100%; max-height: 100%;" src="nah.jpg">`;
         title = "Bilal Aytemur size nah çekiyor";
-        content = `<img style="max-width: 100%; max-height: 100%;" src="nah.jpg">`;
+        content.innerHTML = `<img style="max-width: 100%; max-height: 100%;" src="nah.jpg">`;
+    }
+    if (url.startsWith("https://")) {
+        var path = "htdocs/"+url.replace(/^(https?\:\/\/)/,"");
+        favicon = `<img style="max-width: 100%; max-height: 100%;" src="${path}/favicon.png">`;
+        content.innerHTML = `<iframe style="width:100%;height:100%" src=${path}></iframe>`
+        content.firstChild.addEventListener('load',function(){console.log("iframe loaded")})
     }
     w.favicon = favicon;
     w.url = url ? url : "about:blank";
@@ -101,6 +108,6 @@ function navigateTo(w, url) {
     $(w).find("#url").html(w.url);
     $(w).find("#url-input").val(w.url);
     $(w).find("#title").html(w.pagetitle);
-    $(w).find(".window-content").html(w.content);
+    $(w).find(".window-content").replaceWith(w.content);
     $(w).find("#url-input").blur();
 }
