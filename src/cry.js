@@ -1,5 +1,10 @@
 import {newWindow, openWindow} from './z4ui/windows.js';
 document.wD = wD;
+document.playerContext = {
+    cries: 0
+}
+var p = document.playerContext;
+document.updateBindings = updateBindings;
 var about = `
     <div class="window-header">
         <div class="window-icon quirky">
@@ -39,4 +44,20 @@ function wD(id) {
         w.innerHTML = settings;
         openWindow(w);
     }
+}
+function updateBindings(id) {
+    var value;
+    switch (id) {
+        case "TearsCount": value = p.cries;
+    }
+    // the OS
+    $("#\\%"+id).each(function() {
+        $(this).text(value);
+    })
+    // browser windows
+    $(".browser-window").each(function() {
+        $(this).children("iframe").contents().find("#\\%"+id).each(function() {
+            $(this).text(value);
+        })
+    })
 }

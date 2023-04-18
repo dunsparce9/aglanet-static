@@ -1,10 +1,16 @@
 <!DOCTYPE html>
+<head>
+    <title>İlk site</title>
+</head>
 <body>
-    <a click="cry()">Ağlamak için tıklayın :')</a>
+    <a href="#" onclick="cry()">Ağlamak için tıklayın :')</a>
+    <span id="%TearsCount">0</span><span> kere ağladınız.</span>
 </body>
 <script>
     function cry() {
-        console.log(cries);
-        cries = cries + 1;
+        var doc = window.frameElement.ownerDocument;
+        var p = doc.playerContext;
+        p.cries = p.cries + 1;
+        doc.updateBindings("TearsCount");
     }
 </script>

@@ -83,7 +83,7 @@ function newBrowserWindow(targetUrl) {
 }
 function navigateTo(w, url) {
     var title = "", content = document.createElement("div"), favicon = `<span class="material-symbols-sharp">draft</span>`;
-    content.className = 'window-content';
+    content.className = 'browser-window window-content';
     if (url == "tutorial") {
         favicon = `<span class="material-symbols-sharp">quiz</span>`
         title = "Ağla Nasıl Oynanır";
@@ -95,10 +95,13 @@ function navigateTo(w, url) {
         content.innerHTML = `<img style="max-width: 100%; max-height: 100%;" src="nah.jpg">`;
     }
     if (url.startsWith("https://")) {
-        var path = "htdocs/"+url.replace(/^(https?\:\/\/)/,"");
+        var sitePath = url.replace(/^(https?\:\/\/)/,"");
+        var siteName = sitePath.replace(/\/.*/,"")
+        title = siteName;
+        var path = "htdocs/"+sitePath;
         favicon = `<img style="max-width: 100%; max-height: 100%;" src="${path}/favicon.png">`;
-        content.innerHTML = `<iframe style="width:100%;height:100%" src=${path}></iframe>`
-        content.firstChild.addEventListener('load',function(){console.log("iframe loaded")})
+        content.innerHTML = `<iframe style="width:100%;height:100%;border:none" src=${path}></iframe>`
+        content.firstChild.addEventListener('load',function(){$(w).find("#title").html(this.contentDocument.title);})
     }
     w.favicon = favicon;
     w.url = url ? url : "about:blank";
