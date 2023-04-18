@@ -144,6 +144,7 @@ ul li {
 }
 
 .window-header {
+    position: absolute;
     display: flex;
     height: 24px;
     background: #1B1B1B;
@@ -208,6 +209,8 @@ ul li {
 
 .window-content {
     width: 100%;
+    position: relative;
+    top: 25px;
     height: calc(100% - 25px);
     display: flex;
     overflow: auto;
@@ -297,27 +300,27 @@ ul li {
 .ui-resizable-se {
     width: 16px;
     height: 16px;
-    right: -8px;
-    bottom: -8px;
+    right: -6px;
+    bottom: -6px;
 }
 
 .ui-resizable-sw {
     width: 16px;
     height: 16px;
-    left: -8px;
-    bottom: -8px;
+    left: -6px;
+    bottom: -6px;
 }
 
 .ui-resizable-nw {
     width: 16px;
     height: 16px;
-    left: -8px;
-    top: -8px;
+    left: -6px;
+    top: -6px;
 }
 
 .ui-resizable-ne {
-    width: 12px;
-    height: 12px;
-    right: -8px;
-    top: -8px;
+    width: 16px;
+    height: 16px;
+    right: -6px;
+    top: -6px;
 }

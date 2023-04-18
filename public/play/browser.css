@@ -20,11 +20,13 @@
 
 #wBrowser .window-header {
     box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
     height: 36px;
     border-bottom: 1px solid #696969;
+}
+
+#wBrowser .window-content {
+    top: 36px;
+    height: calc(100% - 36px);
 }
 
 #wBrowser #browser-header-container {
