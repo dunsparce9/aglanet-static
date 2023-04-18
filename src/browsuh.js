@@ -82,31 +82,44 @@ function newBrowserWindow(targetUrl) {
     navigateTo(w, targetUrl);
 }
 function navigateTo(w, url) {
-    var title = "", content = document.createElement("div"), favicon = `<span class="material-symbols-sharp">draft</span>`;
-    content.className = 'browser-window window-content';
+    w.content = document.createElement("div");
+    w.content.className = 'browser-window window-content';
+    w.favicon = `<span class="material-symbols-sharp">draft</span>`;
+    w.url = url;
+    var sitePath = url.replace(/^(https?\:\/\/)/, "");
+    var siteName = sitePath.replace(/\/.*/, "")
+    w.pagetitle = siteName;
     if (url == "tutorial") {
-        favicon = `<span class="material-symbols-sharp">quiz</span>`
-        title = "Ağla Nasıl Oynanır";
-        content.innerHTML = "Ağlayarak\n(tutorial henüz yazılmadı)";
+        w.favicon = `<span class="material-symbols-sharp">quiz</span>`
+        w.pagetitle = "Ağla Nasıl Oynanır";
+        w.content.innerHTML = "Ağlayarak\n(tutorial henüz yazılmadı)";
     }
     if (url == "about:nah") {
-        favicon = `<img style="max-width: 100%; max-height: 100%;" src="nah.jpg">`;
-        title = "Bilal Aytemur size nah çekiyor";
-        content.innerHTML = `<img style="max-width: 100%; max-height: 100%;" src="nah.jpg">`;
+        w.favicon = `<img style="max-width: 100%; max-height: 100%;" src="nah.jpg">`;
+        w.pagetitle = "Bilal Aytemur size nah çekiyor";
+        w.content.innerHTML = `<img style="max-width: 100%; max-height: 100%;" src="nah.jpg">`;
     }
     if (url.startsWith("https://")) {
-        var sitePath = url.replace(/^(https?\:\/\/)/,"");
-        var siteName = sitePath.replace(/\/.*/,"")
-        title = siteName;
-        var path = "htdocs/"+sitePath;
-        favicon = `<img style="max-width: 100%; max-height: 100%;" src="${path}/favicon.png">`;
-        content.innerHTML = `<iframe style="width:100%;height:100%;border:none" src=${path}></iframe>`
-        content.firstChild.addEventListener('load',function(){$(w).find("#title").html(this.contentDocument.title);})
+        var path = "htdocs/" + sitePath;
+        $.ajax({
+            type: 'HEAD',
+            url: path,
+            success: function () {
+                w.favicon = `<img style="max-width: 100%; max-height: 100%;" src="${path}/favicon.png">`;
+                w.content.innerHTML = `<iframe style="width:100%;height:100%;border:none" src="${path}"></iframe>`;
+                w.content.firstChild.addEventListener('load', function () { $(w).find("#title").html(this.contentDocument.title); });
+            },
+            error: function () {
+                w.content.innerHTML = `<iframe style="width:100%;height:100%;border:none" src="htdocs/browser/errors/not_resolved.html"></iframe>`;
+            },
+        }).always(function () {
+            updateWindow(w);
+        });
+    } else {
+        updateWindow(w);
     }
-    w.favicon = favicon;
-    w.url = url ? url : "about:blank";
-    w.pagetitle = title ? title : url;
-    w.content = content;
+}
+function updateWindow(w) {
     $(w).find("#favicon").html(w.favicon);
     $(w).find("#url").html(w.url);
     $(w).find("#url-input").val(w.url);
