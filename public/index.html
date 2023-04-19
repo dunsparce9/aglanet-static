@@ -1,26 +1,70 @@
 <!DOCTYPE html>
 <html style="background-color: #0d0d0d;">
 <style>
-    p {
+    body {
         font-family: Karla;
+        overflow: hidden;
+    }
+    p {
         font-size: 12pt;
         color: lightgray;
+        margin: 0;
+        text-align: center;
     }
+
+    #centered {
+        width: 100%;
+        top: 10%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
     .big {
         color: white;
         font-size: 18pt;
     }
+
+    .block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 2px solid white;
+        border-radius: 6px;
+        width: 470px;
+        margin-top: 15px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
     a {
-        color: rgb(84, 221, 255);
+        color: rgb(147, 233, 255);
+    }
+    h1 {
+        font-size: 14pt;
+        color: lightgray;
+        margin-block: 0;
+        color: rgb(245, 169, 133);
+        text-decoration: none;
+    }
+    h2 {
+        font-size: 14pt;
+        color: lightgray;
+        margin-block: 0;
+        color: rgb(255, 229, 84);
         text-decoration: none;
     }
 </style>
+
 <head>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
     <meta name="subject" content="Ağla.net">
-    <meta name="description" content="Ağla - Tarayıcı tabanlı, tarayıcı tarzında, ağlamalı bir RPG oyunu. Şu an yapım aşamasındadır.">
+    <meta name="description"
+        content="Ağla - Tarayıcı tabanlı, tarayıcı tarzında, ağlamalı bir RPG oyunu. Şu an yapım aşamasındadır.">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -29,17 +73,37 @@
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
     <meta property="og:image" content="/favicon-16x16.png" />
+    <meta name="viewport" content="width=device-width">
     <title>Ana Sayfa | Ağla.net</title>
 </head>
-<div style="display:flex; flex-direction: column; align-items: center; justify-content: center;">
-    <img width="500px" src="img/wip.png">
-    <p class="big">
-        Ağla oynamak için: 
-        <a href="play/">ağla.net/play/</a>
-    </p>
-    <p>
-        Ağla'nın alpha sürümüne yukarıdaki linkten erişebilirsiniz.
-        Oyun geliştirilmesi tamamlandığında Ağla.net'e blog/forum vs. eklenecek.
-    </p>
+<body>
+<div id="centered">
+    <div style="display: flex; justify-content: center; width: 100%;">
+        <img width="400px" src="img/wip.png">
+    </div>
+    <h1>Ağlanet yapım aşamasındadır</h1>
+    <p>Lütfen sonra tekrar ağlayın.</p>
+    <div style="border: 2px solid rgb(147, 233, 255);" class="block">
+        <p class="big">
+            Ağla oynamak için:
+            <a href="play/">ağla.net/play/</a>
+        </p>
+        <p>
+            Ağla'nın alpha sürümüne yukarıdaki linkten erişebilirsiniz.
+        </p>
+    </div>
+    <div style="border: 2px solid rgb(255, 237, 134);" class="block">
+        <h2>Önceki kayıtlar:</h2>
+        <p>
+            Önceki Ağla kaydınız (v1 / WPF) yeni sürüme yüklenebilecek.
+        </p>
+    </div>
+    <div style="border: 2px solid rgb(151, 151, 151);" class="block">
+        <p style="color: darkgray">
+            <a href="https://github.com/dunsparce9/aglanet-static">Site kaynağı</a> / <a
+                href="https://xn--ala-hsa.net/play/nah.jpg">Nah çeken bilal</a> / İletişim: yok kujfhsdjkfhdskj
+        </p>
+    </div>
 </div>
+</body>
 </html>
