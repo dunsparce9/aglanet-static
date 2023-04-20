@@ -136,7 +136,7 @@ function navigateTo(w, url) {
 }
 function updateWindow(w) {
     $(w).find("#favicon").html(w.favicon);
-    $(w).find("#url").html(w.url);
+    $(w).find("#url").html(w.sitePath);
     $(w).find("#url-input").val(w.url);
     $(w).find("#title").html(w.pagetitle);
     $(w).find(".window-content").replaceWith(w.content);
