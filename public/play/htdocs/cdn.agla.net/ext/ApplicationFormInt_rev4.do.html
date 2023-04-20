@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inria+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20,400,0,-25" />
+    <title>İş Başvuru Formu</title>
+
+</head>
+<style>
+    body {
+        font-family: 'Inria Sans';
+        color: white;
+    }
+
+    h1 {
+        margin: 0;
+    }
+
+    #main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 16px;
+        gap: 8px;
+        width: 800px;
+        background: #242424;
+        opacity: 0.8;
+    }
+
+    #cut-here {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 0px;
+        font-family: 'Inter';
+        font-size: 12px;
+        letter-spacing: 0.1em;
+        color: #DEDEDE;
+    }
+
+    #cut-here .material-symbols-sharp {
+        font-size: 16px;
+    }
+
+    #header {
+        width: 778px;
+        height: 76px;
+        filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+
+    #title {
+        position:relative;
+        top:16px;
+        font-style: normal;
+        font-size: 13px;
+        line-height: 16px;
+        text-align: right;
+
+    }
+
+    #infobox {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 0px;
+        gap: 8px;
+
+        position: absolute;
+        width: 298px;
+        height: 56px;
+        left: 0px;
+        top: 20px;
+        text-align: right;
+        font-size: 13px;
+        color: #ACACAC;
+
+    }
+
+    #infobox h1 {
+        font-size: 13px;
+        line-height: 16px;
+        letter-spacing: 0.1em;
+        text-align: left;
+    }
+
+    #infobox h1 b {
+        color: white;
+
+    }
+
+    #icon {
+        position: absolute;
+        width: 91px;
+        height: 62px;
+        left: 343px;
+        top: 7px;
+    }
+
+    #title h1 {
+        font-size: 24px;
+        line-height: 29px;
+        font-weight: 700;
+    }
+
+
+    .separator {
+        box-sizing: border-box;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 0px 6px;
+        gap: 10px;
+
+        width: 778px;
+        height: 25px;
+
+        background: #434343;
+        border: 1px solid #FFFFFF;
+        border-radius: 2px;
+
+    }
+
+    .inverted {
+
+        transform: rotate(-180deg);
+    }
+</style>
+
+<body>
+    <div id="main">
+        <div id="cut-here">
+            <span class="material-symbols-sharp">cut</span>
+            <span>------------------------------------ EH2 ÜYELERİ İÇİN BURADAN YIRTIN
+                ------------------------------------</span>
+            <span class="inverted material-symbols-sharp">cut</span>
+        </div>
+        <div id="header">
+            <div id="infobox">
+                <h1>
+                    <span>ANATRA GLOBAL LACHRYMOSE ASSOCIATION</span>
+                    <span>SECTOR 096 <b>EXPEDITED</b></span>
+                </h1>
+                <span>1 Rahim Cd. No:96, [................] / Anatra</span>
+            </div>
+            <div id="icon">
+                <svg width="91" height="62" viewBox="0 0 91 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M45.5 49.6C50.6705 49.6 55.0653 47.7917 58.6847 44.175C62.304 40.5583 64.1136 36.1667 64.1136 31C64.1136 25.8333 62.304 21.4417 58.6847 17.825C55.0653 14.2083 50.6705 12.4 45.5 12.4C40.3295 12.4 35.9347 14.2083 32.3153 17.825C28.696 21.4417 26.8864 25.8333 26.8864 31C26.8864 36.1667 28.696 40.5583 32.3153 44.175C35.9347 47.7917 40.3295 49.6 45.5 49.6ZM45.5 42.16C42.3977 42.16 39.7608 41.075 37.5892 38.905C35.4176 36.735 34.3318 34.1 34.3318 31C34.3318 27.9 35.4176 25.265 37.5892 23.095C39.7608 20.925 42.3977 19.84 45.5 19.84C48.6023 19.84 51.2392 20.925 53.4108 23.095C55.5824 25.265 56.6682 27.9 56.6682 31C56.6682 34.1 55.5824 36.735 53.4108 38.905C51.2392 41.075 48.6023 42.16 45.5 42.16ZM45.5 62C35.4348 62 26.2659 59.1928 17.9932 53.5783C9.72045 47.9639 3.72273 40.4378 0 31C3.72273 21.5622 9.72045 14.0361 17.9932 8.42167C26.2659 2.80722 35.4348 0 45.5 0C55.5652 0 64.7341 2.80722 73.0068 8.42167C81.2795 14.0361 87.2773 21.5622 91 31C87.2773 40.4378 81.2795 47.9639 73.0068 53.5783C64.7341 59.1928 55.5652 62 45.5 62ZM45.5 25.6267C45.5 25.6267 60.4426 51.6839 66.9574 47.585C73.4722 43.4861 78.453 37.9578 81.9 31C78.453 24.0422 73.4722 18.5139 66.9574 14.415C60.4426 10.3161 53.2902 8.26667 45.5 8.26667C37.7098 8.26667 30.5574 10.3161 24.0426 14.415C17.5278 18.5139 12.547 24.0422 9.1 31C12.547 37.9578 17.5278 43.4861 24.0426 47.585C30.5574 51.6839 45.5 25.6267 45.5 25.6267Z"
+                        fill="white" />
+                </svg>
+
+            </div>
+            <div id="title">
+                <h1>İş Başvuru Formu</h1>Lütfen her alanı doldurun.<br>Bu belge yazdırılamaz.
+            </div>
+        </div>
+        <div class="separator">
+            <span>Kişisel Bilgiler</span>
+        </div>
+    </div>
+</body>
+
+</html>
