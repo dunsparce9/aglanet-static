@@ -36,8 +36,11 @@ function bindEvents(browser) {
         });
 }
 
-function newBrowserWindow(targetUrl) {
+function newBrowserWindow(targetUrl,width) {
     const w = newWindow('wBrowser');
+    if (width) {
+        $(w).css('width',width)
+    }
     w.pagetitle = "Boş sayfa";
     w.url = "about:blank";
     w.content = document.createElement("div");
