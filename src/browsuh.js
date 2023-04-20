@@ -88,33 +88,45 @@ function navigateTo(w, url) {
     w.content = document.createElement("div");
     w.content.className = 'browser-window window-content';
     w.favicon = `<span class="material-symbols-sharp">draft</span>`;
-    w.url = url;
-    var sitePath = url.replace(/^(https?\:\/\/)/, "");
-    var siteName = sitePath.replace(/\/.*/, "")
-    w.pagetitle = siteName;
-    if (url == "tutorial") {
+    w.url = url == "" ? "about:blank" : url;
+    w.sitePath = w.url.replace(/^(https?\:\/\/)/, "");
+    var siteName = w.sitePath.replace(/\/.*/, "")
+    w.pagetitle = w.url == "about:blank" ? "" : siteName;
+    if (w.url == "tutorial") {
         w.favicon = `<span class="material-symbols-sharp">quiz</span>`
         w.pagetitle = "Ağla Nasıl Oynanır";
         w.content.innerHTML = "Ağlayarak\n(tutorial henüz yazılmadı)";
     }
-    if (url == "about:nah") {
+    if (w.url == "about:nah") {
         w.favicon = `<img style="max-width: 100%; max-height: 100%;" src="nah.jpg">`;
         w.pagetitle = "Bilal Aytemur size nah çekiyor";
         w.content.innerHTML = `<img style="max-width: 100%; max-height: 100%;" src="nah.jpg">`;
     }
-    if (url.startsWith("https://")) {
-        var path = "htdocs/" + sitePath;
+    if (w.url.startsWith("https://")) {
+        var path = "htdocs/" + w.sitePath;
+        path = path.endsWith(".html") ? path : path + ".html";
         $.ajax({
             type: 'HEAD',
-            url: path,
-            success: function () {
-                w.favicon = `<img style="max-width: 100%; max-height: 100%;" src="${path}/favicon.png">`;
-                w.content.innerHTML = `<iframe style="width:100%;height:100%;border:none" src="${path}"></iframe>`;
-                w.content.firstChild.addEventListener('load', function () { $(w).find("#title").html(this.contentDocument.title); });
+            url: "htdocs/" + siteName,
+            success: function() {
+                $.ajax({
+                    type: 'HEAD',
+                    url: path,
+                    success: function () {
+                        w.favicon = `<img style="max-width: 100%; max-height: 100%;" src="${path}/favicon.png">`;
+                        w.content.innerHTML = `<iframe style="width:100%;height:100%;border:none" src="${path}"></iframe>`;
+                        w.content.firstChild.addEventListener('load', function () { $(w).find("#title").html(this.contentDocument.title); });
+                    },
+                    error: function () {
+                        w.content.innerHTML = `<iframe style="width:100%;height:100%;border:none" src="htdocs/browser/errors/not_found.html"></iframe>`;
+                        w.content.firstChild.addEventListener('load', function () { console.log($(this).contents().find("#site-name").text(w.url)); });
+                    }
+                });
             },
             error: function () {
                 w.content.innerHTML = `<iframe style="width:100%;height:100%;border:none" src="htdocs/browser/errors/not_resolved.html"></iframe>`;
-            },
+                w.content.firstChild.addEventListener('load', function () { console.log($(this).contents().find("#site-name").text(siteName)); });
+            }
         }).always(function () {
             updateWindow(w);
         });
