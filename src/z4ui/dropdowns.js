@@ -5,7 +5,7 @@ $(document).ready(function () {
   });
 
   $(".dropdown-button").mouseenter(function () {
-    if (dropdownOpened) {
+    if (dropdownOpened && !this.classList.contains('opened')) {
       showMenu(this);
     }
   });
