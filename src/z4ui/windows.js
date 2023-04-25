@@ -8,7 +8,8 @@ $(document).ready(function () {
 function bindEvents(window) {
   $(window).draggable({
     handle: ".window-header",
-    scroll: false
+    scroll: false,
+    iframeFix: true
   });
   $(window).resizable({
     handles: "all",
@@ -40,7 +41,7 @@ function updateZindex() {
     $(window).css("z-index", windowStack.indexOf(window));
   });
 }
-export function newWindow(id,title) {
+export function newWindow(id, title) {
   const window = document.createElement("div");
   window.id = id;
   window.className = "window";
