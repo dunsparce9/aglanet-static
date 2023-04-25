@@ -30,25 +30,21 @@ body {
         right: 0;
         width: 100%
     }
-  }
+}
 
-#taskbar-labels {
-    /* Auto layout */
+#menubar-labels {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
     list-style: none;
     margin: 0;
     padding: 0;
     height: 100%;
 }
 
-#taskbar-labels li {
+#menubar-labels li {
     height: 100%;
 }
 
-.taskbar-item {
+#menubar-labels li a {
     display: flex;
     padding: 0 5px 0 5px;
     align-items: center;
@@ -60,11 +56,7 @@ body {
     user-select: none;
 }
 
-.main-taskbar-item {
-    font-weight: bold;
-}
-
-#cry-counter {
+#tears {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -73,12 +65,6 @@ body {
     gap: 6px;
     color: #FFF4CC;
 }
-
-#cry-count {
-    font-family: 'Karla';
-    font-size: 20px;
-}
-
 
 
 ul li {
@@ -93,10 +79,11 @@ ul li {
 .dropdown-button.opened {
     background-color: rgb(52, 52, 52);
 }
- 
+
 .dropdown-menu {
     display: none;
-    z-index: 9999999; /* AĞLA */
+    z-index: 9999999;
+    /* AĞLA */
     flex-direction: column;
     position: absolute;
     top: 100%;
