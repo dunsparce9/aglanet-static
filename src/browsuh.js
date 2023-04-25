@@ -5,6 +5,14 @@ $(document).ready(function () {
 });
 
 function bindEvents(browser) {
+    $(browser).resizable({
+        start: function (event, ui) {
+            $('iframe').css('pointer-events', 'none');
+        },
+        stop: function (event, ui) {
+            $('iframe').css('pointer-events', 'auto');
+        }
+    });
     $(browser)
         .find("#title-display")
         .click(function () {
@@ -36,10 +44,10 @@ function bindEvents(browser) {
         });
 }
 
-function newBrowserWindow(targetUrl,width) {
+function newBrowserWindow(targetUrl, width) {
     const w = newWindow('wBrowser');
     if (width) {
-        $(w).css('width',width)
+        $(w).css('width', width)
     }
     w.pagetitle = "Boş sayfa";
     w.url = "about:blank";
@@ -108,7 +116,7 @@ function navigateTo(w, url) {
         $.ajax({
             type: 'HEAD',
             url: "htdocs/" + siteName,
-            success: function() {
+            success: function () {
                 $.ajax({
                     type: 'HEAD',
                     url: path,
