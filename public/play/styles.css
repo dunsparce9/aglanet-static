@@ -34,11 +34,10 @@ body {
 }
 
 #menubar-labels {
-    display: flex;
-    list-style: none;
     margin: 0;
     padding: 0;
     height: 100%;
+    list-style: none;
 }
 
 #menubar-labels li {
@@ -47,7 +46,9 @@ body {
 
 #menubar-labels li a {
     display: flex;
-    padding: 0 5px 0 5px;
+    padding: 2px 5px 0 16px;
+    position: relative;
+    z-index: 1;
     align-items: center;
     font-family: 'Karla';
     font-weight: normal;
@@ -55,6 +56,39 @@ body {
     color: #FFFFFF;
     height: 100%;
     user-select: none;
+}
+
+.menubar-icon {
+    position: absolute;
+    top: 0;
+    opacity: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+#cry.menubar-icon {
+    color: #42befa;
+}
+
+#tears.menubar-icon {
+    color: lightblue;
+}
+
+#inventory.menubar-icon {
+    color: lemonchiffon;
+}
+
+#places.menubar-icon {
+    color: lightgreen;
+}
+
+#actions.menubar-icon {
+    color: lightcoral;
+}
+
+#help.menubar-icon {
+    color: white;
 }
 
 #topbar-right {
@@ -93,10 +127,10 @@ ul li {
     flex-direction: column;
     position: absolute;
     top: 100%;
-    padding: 0;
+    padding: 3px;
     margin: 0;
     list-style: none;
-    width: 250px;
+    width: max-content;
     background: rgb(31, 31, 31);
     border-radius: 0px 0px 6px 6px;
     overflow: hidden;
@@ -112,8 +146,22 @@ ul li {
     align-items: center;
     font-size: 14px;
     text-decoration: none;
-    padding: 4px;
+    padding: 2px;
     color: white;
+}
+
+.dropdown-menu li.disabled {
+    color: gray;
+}
+
+.dropdown-menu li.disabled:hover {
+    background-color: rgb(60, 60, 60);
+}
+
+.dropdown-menu div.separator {
+    background-color: rgb(64, 64, 64);
+    margin: 2px 3px 2px 3px;
+    height: 1px;
 }
 
 .dropdown-menu li span.material-symbols-sharp {

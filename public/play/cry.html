@@ -24,7 +24,7 @@
 <body>
     <div id="topbar">
         <ul id="menubar-labels">
-            <li><a class="dropdown-button"><b>Ağla</b></a>
+            <li class="dropdown-button menubar-item">
                 <ul class="dropdown-menu">
                     <li style="color:lightgreen"
                         onclick="wB('https://cdn.agla.net/ext/ApplicationFormInt_rev4.do',850)"><span
@@ -34,30 +34,66 @@
                     <li><span class="material-symbols-sharp">drive_folder_upload</span>
                         İçeri aktar...
                     </li>
+                    <div class="separator"></div>
+                    <li onclick="wD('wSettings')"><span class="material-symbols-sharp">settings</span>
+                        Ayarlar...
+                    </li>
+                    <li onclick="wB('about:nah')"><span class="material-symbols-sharp">block</span>
+                        Nah çeken bilal...
+                    </li>
                     <li onclick="window.close()"><span class="material-symbols-sharp">logout</span>
                         Çıkış
                     </li>
                 </ul>
+                <a><b>Ağla</b></a>
+                <span id="cry" class="menubar-icon material-symbols-sharp">water_drop</span>
             </li>
-            <li><a class="dropdown-button menubar-item">Ayarlar</a>
+            <li class="dropdown-button menubar-item">
                 <ul class="dropdown-menu">
-                    <li onclick="wD('wSettings')"><span class="material-symbols-sharp">settings</span>
-                        Tüm ayarlar...
+                    <li class="aeeeeee"><span class="material-symbols-sharp">block</span>
+                        Depo Yöneticisi...
+                    </li>
+                    <li class="disabled"><span class="material-symbols-sharp">block</span>
+                        Hesap eylemleri
+                        <!--Anatra kron hesabı, mevduat hesabı vs. Greyed out, submenu-->
+                    </li>
+                    <li><span class="material-symbols-sharp">block</span>
+                        Tüm gözyaşlarını boşalt
                     </li>
                 </ul>
+                <a>Yaşlar</a>
+                <span id="tears" class="menubar-icon material-symbols-sharp">oil_barrel</span>
             </li>
-            <li><a class="dropdown-button menubar-item">Yardım</a>
+            <li class="dropdown-button menubar-item">
+                <ul class="dropdown-menu">
+                </ul>
+                <a>Envanter</a>
+                <span id="inventory" class="menubar-icon material-symbols-sharp">deployed_code</span>
+            </li>
+            <li class="dropdown-button menubar-item">
+                <ul class="dropdown-menu">
+                </ul>
+                <a>Yerler</a>
+                <span id="places" class="menubar-icon material-symbols-sharp">location_on</span>
+            </li>
+            <li class="dropdown-button menubar-item">
+                <ul class="dropdown-menu">
+                </ul>
+                <a>Eylemler</a>
+                <span id="actions" class="menubar-icon material-symbols-sharp">bolt</span>
+            </li>
+            <li class="dropdown-button menubar-item">
                 <ul class="dropdown-menu">
                     <li onclick="wB('tutorial')"><span class="material-symbols-sharp">quiz</span>
                         Nasıl Oynanır
-                    </li>
-                    <li onclick="wB('about:nah')"><span class="material-symbols-sharp">block</span>
-                        Nah Çeken Bilal
                     </li>
                     <li onclick="wD('wAbout')"><span class="material-symbols-sharp">info</span>
                         Ağla v0.1 Hakkında...
                     </li>
                 </ul>
+                <a>Yardım</a>
+                <span id="help" class="menubar-icon material-symbols-sharp">help</span>
+            </li>
             </li>
         </ul>
         <div id="topbar-right">
