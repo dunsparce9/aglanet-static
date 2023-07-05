@@ -34,7 +34,7 @@
                     <li><span class="material-symbols-sharp">drive_folder_upload</span>
                         İçeri aktar...
                     </li>
-                    <li><span class="material-symbols-sharp">logout</span>
+                    <li onclick="window.close()"><span class="material-symbols-sharp">logout</span>
                         Çıkış
                     </li>
                 </ul>
@@ -70,10 +70,26 @@
                             fill="currentColor" stroke="currentColor" />
                     </svg>
                 </div>
-                <ul class="dropdown-menu">
-                    <li>
-                        Ağla...
-                    </li>
+                <ul id="cry-container" class="dropdown-menu">
+                    <div class="flex-stretch">
+                        <div class="cry-info-holder l">
+                            <span class="material-symbols-sharp">humidity_high</span>
+                            <div>
+                                <span class="header">Lv1 Dahili</span>
+                                <span class="desc">ort. <i>0.75</i> mL/s</span>
+                            </div>
+                        </div>
+                        <div class="cry-info-holder r">
+                            <div>
+                                <span class="header">G. Kapağı</span>
+                                <span class="desc">0 ml <i>%0</i></span>
+                            </div>
+                            <span class="material-symbols-sharp">local_drink</span>
+                        </div>
+                    </div>
+                    <div id="the-button">
+                        <span>Ağla</span>
+                    </div>
                 </ul>
             </div>
         </div>

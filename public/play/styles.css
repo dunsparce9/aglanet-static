@@ -25,10 +25,6 @@ body {
     user-select: none;
 }
 
-#topbar div {
-    height: 100%;
-}
-
 @media only screen and (max-width: 500px) {
     #topbar {
         left: 0;
@@ -61,6 +57,10 @@ body {
     user-select: none;
 }
 
+#topbar-right {
+    height: 100%;
+}
+
 #tears {
     display: flex;
     flex-direction: row;
@@ -69,6 +69,7 @@ body {
     padding: 0px;
     gap: 6px;
     color: #FFF4CC;
+    height: 100%;
 }
 
 
@@ -315,4 +316,96 @@ ul li {
     height: 16px;
     right: -6px;
     top: -6px;
+}
+
+#cry-container {
+    width: 224px;
+    height: 128px;
+    background: #1B1B1B;
+    padding: 4px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cry-info-holder {
+    width: 112px;
+    height: 30px;
+    display: flex;
+}
+
+.cry-info-holder .header {
+    font-size: 14px;
+}
+
+.cry-info-holder .desc {
+    position: relative;
+    bottom: 3px;
+    font-size: 12px;
+    font-family: Karla;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.cry-info-holder div {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-stretch {
+    display: flex;
+}
+
+.cry-info-holder .material-symbols-sharp {
+    position: relative;
+    top: 3px;
+}
+
+.cry-info-holder.l .material-symbols-sharp {
+    color: lightblue;
+}
+
+.cry-info-holder.l .desc i {
+    font-style: normal;
+    color: lightblue;
+}
+
+.cry-info-holder.r {
+    justify-content: flex-end;
+}
+
+.cry-info-holder.r .material-symbols-sharp {
+    color: lightgray;
+}
+
+.cry-info-holder.r .desc {
+    text-align: right;
+}
+
+.cry-info-holder.r .desc i {
+    font-style: normal;
+    color: lightgreen;
+}
+
+#the-button {
+    display: flex;
+    width: 220px;
+    padding: 6px 0px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    background: rgba(178, 241, 255, 0.30);
+}
+
+#the-button span {
+    color: #FFF;
+    text-align: right;
+    text-shadow: 0px 4px 2px 0px rgba(0, 0, 0, 0.25);
+    font-size: 24px;
+    font-family: Karla;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
 }
