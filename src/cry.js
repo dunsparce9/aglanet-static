@@ -1,5 +1,6 @@
-import {newWindow, openWindow} from './z4ui/windows.js';
+import { newWindow, openWindow, closeWindow as cw } from './z4ui/windows.js';
 document.wD = wD;
+document.closeWindow = cw;
 document.playerContext = {
     cries: 0
 }
@@ -35,12 +36,12 @@ var settings = `
 </div>`
 function wD(id) {
     if (id === "wAbout") {
-        var w = newWindow("wAbout","Ağla Hakkında");
+        var w = newWindow("wAbout", "Ağla Hakkında");
         w.innerHTML = about;
         openWindow(w);
     }
     if (id === "wSettings") {
-        var w = newWindow("wSettings","Ağla Ayarları");
+        var w = newWindow("wSettings", "Ağla Ayarları");
         w.innerHTML = settings;
         openWindow(w);
     }
@@ -51,12 +52,12 @@ function updateBindings(id) {
         case "TearsCount": value = p.cries;
     }
     // the OS
-    $("#\\%"+id).each(function() {
+    $("#\\%" + id).each(function () {
         $(this).text(value);
     })
     // browser windows
-    $(".browser-window").each(function() {
-        $(this).children("iframe").contents().find("#\\%"+id).each(function() {
+    $(".browser-window").each(function () {
+        $(this).children("iframe").contents().find("#\\%" + id).each(function () {
             $(this).text(value);
         })
     })

@@ -61,6 +61,12 @@ body {
     height: 100%;
 }
 
+#nickname {
+    color: #696969;
+    font-family: Karla;
+    font-size: 14px;
+}
+
 #tears {
     display: flex;
     flex-direction: row;

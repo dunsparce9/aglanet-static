@@ -23,11 +23,11 @@ function bindEvents(window) {
     bringToFront(window);
   });
   $(window).find('.window-close').click(function () {
-    winX(window);
+    closeWindow(window);
   });
 }
 
-function winX(window) {
+export function closeWindow(window) {
   // (the X button) > windowButtons > windowHeader > window
   window.style.display = "none";
   const index = windowStack.indexOf(window);
@@ -45,6 +45,9 @@ export function newWindow(id, title) {
   const window = document.createElement("div");
   window.id = id;
   window.className = "window";
+  window.close = function () {
+    closeWindow(this);
+  }
   return window;
 }
 export function openWindow(window) {

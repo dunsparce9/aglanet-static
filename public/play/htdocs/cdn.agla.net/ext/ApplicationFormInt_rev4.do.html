@@ -6,7 +6,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inria+Sans&display=swap" rel="stylesheet">
-
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20,400,0,-25" />
     <title>İş Başvuru Formu</title>
@@ -140,8 +139,8 @@
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
-        gap: 3px;
-        padding-right: 5px;
+        gap: 2px;
+        padding-right: 4px;
     }
 
     .inputname {
@@ -177,8 +176,72 @@
 
     }
 
-    .inputcontent#nickname {
+    .inputcontent#pNickname {
         border: 1px solid #FFC398;
+    }
+
+    .checkboxbox {
+        background: #434343;
+        display: flex;
+        width: max-content;
+        min-width: 260px;
+        height: 27px;
+        padding: 0px 6px;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .checkboxtitle {
+        color: #FFF;
+        text-align: right;
+        font-family: Inria Sans;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+
+    .checkboxlabel {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 10px;
+        gap: 2px;
+    }
+
+    .checkbox {
+        width: 16px;
+        height: 16px;
+        background: #D9D9D9;
+    }
+
+    .startbtn {
+        display: flex;
+        width: 120px;
+        height: 36px;
+        padding: 0px 6px;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        flex-shrink: 0;
+        border-radius: 2px;
+        border: 1px solid #FFF;
+        background: #285000;
+    }
+
+    .startbtn:hover {
+        cursor: default;
+        background: #3e7c00;
+    }
+
+    .startbtn p {
+        color: #FFF;
+        text-align: center;
+        text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        font-family: Inria Sans;
+        font-size: 20px;
+        letter-spacing: 1.6px;
+        user-select: none;
     }
 </style>
 
@@ -215,29 +278,78 @@
         </div>
         <div style="height: 109px;
         width: 778px;">
-            <div class="inputframe">
+            <div class="inputframe" style="width:200px;">
                 <p class="inputname">Ad Soyad</p>
-                <input class="inputcontent"></input>
+                <input class="inputcontent" id="pName"></input>
             </div>
-            <div class="inputframe">
+            <div class="inputframe" style="width:200px;">
                 <p class="inputname">Rumuz</p>
-                <input class="inputcontent" id="nickname"></input>
+                <input class="inputcontent" id="pNickname"></input>
             </div>
-            <div class="inputframe" style="width:50px;">
+            <div class="inputframe" style="width:60px;">
                 <p class="inputname">Cinsiyet</p>
                 <input class="inputcontent" value="Ağla" disabled></input>
             </div>
-            <div class="inputframe disabled" style=" width:120px;">
+            <div class="inputframe disabled" style="padding-left: 4px; width:140px;">
                 <p class="inputname">Başvuru Tarihi</p>
-                <input class="inputcontent" value="2020.02.02"></input>
+                <input class="inputcontent" value="2020.02.02" disabled></input>
             </div>
-            <div class="inputframe disabled" style=" width:120px;">
+            <div class="inputframe disabled" style="width:140px;">
                 <p class="inputname">Doğum Tarihi</p>
-                <input class="inputcontent" value="2020.02.02"></input>
+                <input class="inputcontent" value="2020.02.02" disabled></input>
+            </div>
+            <div class="inputframe disabled" style="width:778px">
+                <p class="inputname">Mevcut Adres</p>
+                <input class="inputcontent" value="1 Rahim Sk 09BD8BF71F91" disabled></input>
             </div>
         </div>
-    </div>
+        <div class="separator">
+            <span>Başvuru Anketi</span>
+        </div>
+        <div style="display: flex;
+        align-items: center;
+        gap: 4px;
+    flex-wrap: wrap;
+    justify-content: center;">
+            <div class="checkboxbox">
+                <p class="checkboxtitle">Ağlıyor musunuz?</p>
+                <div class="checkboxlabel">
+                    <p class="checkboxtitle">Evet</p>
+                    <input type="checkbox" class="checkbox" checked disabled>
+                </div>
+            </div>
+            <div class="checkboxbox">
+                <p class="checkboxtitle">Daha fazla ağlamak ister misiniz?</p>
+                <div class="checkboxlabel">
+                    <p class="checkboxtitle">Evet</p>
+                    <input type="checkbox" class="checkbox" checked disabled>
+                </div>
+            </div>
+            <div class="checkboxbox">
+                <p class="checkboxtitle">AGLA'yı çökertmek istemediğinize yemin ediyor musunuz?</p>
+                <div class="checkboxlabel">
+                    <p class="checkboxtitle">Evet</p>
+                    <input type="checkbox" class="checkbox" checked disabled>
+                </div>
+            </div>
+        </div>
+        <div class="startbtn" onclick="start()">
+            <p>İşe Başla</p>
+        </div>
     </div>
 </body>
+<script>
+    function start() {
+        var doc = window.frameElement.ownerDocument;
+        var p = doc.playerContext;
+        p.cries = p.cries + 1;
+        p.name = document.getElementById("pName").value;
+        p.nickname = document.getElementById("pNickname").value;
+        doc.getElementById("nickname").textContent = p.nickname;
+        doc.getElementById("nickname").style.color = "white";
+        doc.updateBindings("TearsCount");
+        doc.closeWindow(window.frameElement.parentElement.parentElement);
+    }
+</script>
 
 </html>
