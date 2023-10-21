@@ -56,8 +56,8 @@
     }
 
     #title {
-        position:relative;
-        top:16px;
+        position: relative;
+        top: 16px;
         font-style: normal;
         font-size: 13px;
         line-height: 16px;
@@ -134,6 +134,52 @@
 
         transform: rotate(-180deg);
     }
+
+    .inputframe {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 3px;
+        padding-right: 5px;
+    }
+
+    .inputname {
+        color: #FFF;
+        margin: 0;
+        padding: 0;
+        text-align: right;
+        font-family: Inria Sans;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+    }
+
+    .inputframe.disabled .inputname {
+        color: #464646;
+    }
+
+    .inputframe.disabled .inputcontent {
+        border: 1px solid #464646;
+        color: #747474;
+    }
+
+    .inputcontent {
+        height: 24px;
+        align-self: stretch;
+        border-radius: 2px;
+        border: 1px solid #D9D9D9;
+        background: #2D2D2D;
+        color: white;
+        font-family: Inria Sans;
+        font-size: 16px;
+
+    }
+
+    .inputcontent#nickname {
+        border: 1px solid #FFC398;
+    }
 </style>
 
 <body>
@@ -167,6 +213,30 @@
         <div class="separator">
             <span>Kişisel Bilgiler</span>
         </div>
+        <div style="height: 109px;
+        width: 778px;">
+            <div class="inputframe">
+                <p class="inputname">Ad Soyad</p>
+                <input class="inputcontent"></input>
+            </div>
+            <div class="inputframe">
+                <p class="inputname">Rumuz</p>
+                <input class="inputcontent" id="nickname"></input>
+            </div>
+            <div class="inputframe" style="width:50px;">
+                <p class="inputname">Cinsiyet</p>
+                <input class="inputcontent" value="Ağla" disabled></input>
+            </div>
+            <div class="inputframe disabled" style=" width:120px;">
+                <p class="inputname">Başvuru Tarihi</p>
+                <input class="inputcontent" value="2020.02.02"></input>
+            </div>
+            <div class="inputframe disabled" style=" width:120px;">
+                <p class="inputname">Doğum Tarihi</p>
+                <input class="inputcontent" value="2020.02.02"></input>
+            </div>
+        </div>
+    </div>
     </div>
 </body>
 
