@@ -2,7 +2,13 @@ import { newWindow, openWindow, closeWindow as cw } from './z4ui/windows.js';
 document.wD = wD;
 document.closeWindow = cw;
 document.playerContext = {
-    cries: 0
+    cries: 0,
+    salt: 0,
+    glandSize = 5,
+    storageSize = 5,
+    autocryEfficiency = 0.1,
+    events = ["aglanet.NoEvent"],
+    upgradesBought = [ ],
 }
 var p = document.playerContext;
 document.updateBindings = updateBindings;
