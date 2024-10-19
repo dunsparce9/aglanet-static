@@ -4,11 +4,11 @@ document.closeWindow = cw;
 document.playerContext = {
     cries: 0,
     salt: 0,
-    glandSize = 5,
-    storageSize = 5,
-    autocryEfficiency = 0.1,
-    events = ["aglanet.NoEvent"],
-    upgradesBought = [ ],
+    glandSize: 5,
+    storageSize: 5,
+    autocryEfficiency: 0.1,
+    events: ["aglanet.NoEvent"],
+    upgradesBought: [ ],
 }
 var p = document.playerContext;
 document.updateBindings = updateBindings;
