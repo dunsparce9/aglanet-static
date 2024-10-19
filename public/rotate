@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Rotation Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #333;
+        }
+        .container {
+            background-color: white;
+            color: #333;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            position: relative;
+            width: 400px;
+        }
+        .container.dark-mode {
+            background-color: #222;
+            color: #fff;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.9em;
+        }
+        .container.dark-mode .description {
+            color: #aaa;
+        }
+        .dropdown-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        select {
+            padding: 5px;
+        }
+        textarea {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 10px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            position: relative;
+            z-index: 1;
+            background-color: white;
+            color: #333;
+        }
+        .container.dark-mode textarea {
+            background-color: #333;
+            color: #fff;
+            border-color: #555;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+            z-index: 2;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #666;
+        }
+        .container.dark-mode .footer {
+            color: #aaa;
+        }
+        .transfer-icon {
+            font-size: 24px;
+        }
+        #rotationCount {
+            visibility: hidden;
+            background-color: #008b8b;
+            color: white;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            height: 20px;
+            line-height: 20px;
+        }
+        #settingsButton {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: white;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            padding: 0;
+        }
+        .container.dark-mode #settingsButton {
+            background-color: #333;
+            color: white;
+            border-color: #555;
+        }
+        #settingsPopup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+        .container.dark-mode #settingsPopup {
+            background-color: #222;
+            color: #fff;
+        }
+        #settingsPopup h2 {
+            margin-top: 0;
+        }
+        #settingsPopup label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        #settingsPopup select,
+        #settingsPopup input[type="checkbox"] {
+            margin-left: 10px;
+        }
+        .hire-link {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #4CAF50;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+        #hireRotatorPopup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            z-index: 1000;
+            width: 300px;
+        }
+        .container.dark-mode #hireRotatorPopup {
+            background-color: #222;
+            color: #fff;
+        }
+        #hireRotatorPopup h2 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+        #hireRotatorPopup p {
+            margin-bottom: 20px;
+        }
+        #hireRotatorPopup input {
+            width: 100%;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+        #hireRotatorPopup button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 5px;
+        }
+        #hireRotatorPopup button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="mainContainer">
+        <h1>Text Rotation Service</h1>
+        <p class="description">Fast and high quality rotation service developed by the brightest minds at Hocam (İMT).<br>Rotate in moderation.</p>
+        <div id="rotationCount">You rotated 0 times!</div>
+        <div class="dropdown-container">
+            <select id="fromLang">
+                <option value="en" selected>English</option>
+                <option value="tr">Turkish</option>
+            </select>
+            <span class="transfer-icon">&#8644;</span>
+            <select id="toLang">
+                <option value="en">English</option>
+                <option value="tr" selected>Turkish</option>
+            </select>
+        </div>
+        <textarea id="textInput" placeholder="Enter your text here"></textarea>
+        <button onclick="rotateText()">Rotate</button>
+        <div class="footer">© 2024 Turning Point Rotation Ltd.</div><div class="hire-link" onclick="showHireRotator()">Looking for even better rotation?</div>
+        <button id="settingsButton">⚙️</button>
+    </div>
+
+    <div id="settingsPopup">
+        <h2>Settings</h2>
+        <label>
+            <input type="checkbox" id="darkModeToggle"> Dark mode
+        </label>
+        <label>
+            <input type="checkbox" id="highQualityRotation"> High quality rotation (slower)
+        </label>
+        <label>
+            Rotation counter behavior:
+            <select id="rotationCounterBehavior">
+                <option value="upsideDown">When upside down</option>
+                <option value="always">All the time</option>
+            </select>
+        </label>
+        <button onclick="closeSettings()">Close</button>
+    </div>
+
+    <div id="hireRotatorPopup">
+        <h2>Hire Rotator</h2>
+        <p>Leverage the power of Hocam (İMT) rotators from their office at MDC. Simply put in your credit card details and expect a rotation in 3 to 5 business years.</p>
+        <input type="text" placeholder="Card Number" id="cardNumber">
+        <input type="text" placeholder="Expiration Date" id="expirationDate">
+        <input type="text" placeholder="CVC" id="cvc">
+        <button onclick="submitPayment()">Pay</button>
+        <button onclick="submitPayment()">Pay</button>
+        <button onclick="submitPayment()">Pay</button>
+    </div>
+
+    <script>
+        let rotation = 0;
+        let rotationCount = 0;
+        let hasBeenUpsideDown = false;
+        let darkMode = false;
+        let highQualityRotation = false;
+        let rotationCounterBehavior = 'upsideDown';
+
+        function rotateText() {
+            const textArea = document.getElementById('textInput');
+            const rotationCountDiv = document.getElementById('rotationCount');
+            rotation += highQualityRotation ? 1 : 5;
+            if (rotation >= 360) {
+                rotation = 0;
+            }
+            textArea.style.transform = `rotate(${rotation}deg)`;
+
+            rotationCount++;
+
+            // Check if the text box is upside down (between 175 and 185 degrees)
+            if (rotation >= 175 && rotation <= 185) {
+                hasBeenUpsideDown = true;
+            }
+
+            if (rotationCounterBehavior === 'always' || (rotationCounterBehavior === 'upsideDown' && hasBeenUpsideDown)) {
+                rotationCountDiv.style.visibility = 'visible';
+                rotationCountDiv.textContent = `You rotated ${rotationCount} times!`;
+            }
+        }
+
+        document.getElementById('settingsButton').addEventListener('click', function() {
+            document.getElementById('settingsPopup').style.display = 'block';
+        });
+
+        function closeSettings() {
+            document.getElementById('settingsPopup').style.display = 'none';
+        }
+
+        document.getElementById('darkModeToggle').addEventListener('change', function() {
+            darkMode = this.checked;
+            document.getElementById('mainContainer').classList.toggle('dark-mode', darkMode);
+        });
+
+        document.getElementById('highQualityRotation').addEventListener('change', function() {
+            highQualityRotation = this.checked;
+        });
+
+        document.getElementById('rotationCounterBehavior').addEventListener('change', function() {
+            rotationCounterBehavior = this.value;
+            const rotationCountDiv = document.getElementById('rotationCount');
+            if (rotationCounterBehavior === 'always') {
+                rotationCountDiv.style.visibility = 'visible';
+                rotationCountDiv.textContent = `You rotated ${rotationCount} times!`;
+            } else if (!hasBeenUpsideDown) {
+                rotationCountDiv.style.visibility = 'hidden';
+            }
+        });
+        function showHireRotator() {
+            document.getElementById('hireRotatorPopup').style.display = 'block';
+        }
+
+        function submitPayment() {
+            alert("Your Expert Rotation Service request has been received. We will rotate SO hard you won't believe it");
+            document.getElementById('hireRotatorPopup').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
