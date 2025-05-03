@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Ağla - 0 gözyaşı</title>
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@700&display=swap" rel="stylesheet">
+    <style>
+        p {
+            color: white;
+            margin: 0;
+        }
+        #main {
+            display: flex;
+            background-color: #2d2d2d;
+            font-family: 'Karla';
+        }
+
+        #leftPanel {
+            display: flex;
+            width: 230px;
+            flex-direction: column;
+        }
+
+        #perSecondHolder {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .perSecondContainer {
+            display: flex;
+            flex-direction: column;
+            font-weight: bold;
+        }
+        #perSecondTears .perSecondValue {
+            color: #48DEFF;
+        }
+        #perSecondSalt .perSecondValue {
+            color: #FFB54E;
+        }
+        #perSecondSalt {
+            align-items: flex-end;
+        }
+        #cryButton {
+            display: flex;
+            background-color: #b2f1ff47;
+            height: 45px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <div id="leftPanel">
+            <div id="perSecondHolder">
+                <div id="perSecondTears" class="perSecondContainer">
+                    <p class="perSecondHeader">Gözyaşı</p>
+                    <p class="perSecondValue">130 mL/s</p>
+                </div>
+                <div id="perSecondSalt" class="perSecondContainer">
+                    <p class="perSecondHeader">Tuz</p>
+                    <p class="perSecondValue">10 g/s</p>
+                </div>
+            </div>
+            <div id="cryButton">
+                <p>Ağla</p>
+            </div>
+            <div class="progressBarView">
+
+            </div>
+            <div class="progressBarView">
+
+            </div>
+        </div>
+
+        <div id="tabbedView">
+
+        </div>
+    </div>
+</body>
